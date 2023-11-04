@@ -6,17 +6,17 @@ Webfate é uma plataforma de vendas online desenvolvida com um design moderno, e
 
 ## Equipe
 
-- **Davi Rafael (Designer e Full-Stack Master)**
-- **Allan Reymond (Liderança de grupo e Full-Stack)**
-- **Nicholas De (Front-End)**
-- **Julya Sally (Front-End)**
-- **Maria Eduarda (Back-End)**
-- **Pedro Lucas (Front-End)**
-- **Felipe Patricio (Back-End)**
-- **Pedro Guilherme (Front-End)**
-- **Eduardo Barros (Front-End)**
-- **Luiz Antônio (Front-End)**
-- **Alexandre Rodrigues (Front-End)**
+- **Davi Rafael**
+- **Allan Reymond**
+- **Nicholas De**
+- **Julya Sally)**
+- **Maria Eduarda**
+- **Pedro Lucas**
+- **Felipe Patricio**
+- **Pedro Guilherme**
+- **Eduardo Barros**
+- **Luiz Antônio**
+- **Alexandre Rodrigues**
 
 ## Visão Geral
 
