@@ -8,8 +8,8 @@ Webfate é uma plataforma de vendas online desenvolvida com um design moderno, e
 
 - **Davi Rafael**
 - **Allan Reymond**
-- **Nicholas De**
-- **Julya Sally)**
+- **Nicholas Araújo**
+- **Julya Sally**
 - **Maria Eduarda**
 - **Pedro Lucas**
 - **Felipe Patricio**
