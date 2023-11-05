@@ -1,6 +1,6 @@
 # Webfate - Plataforma de Vendas Online
 
-<img src="Home/Assets/semtitulo.png" alt="Texto Alternativo" width="200" height="100">
+<img src="/static/Assets/semtitulo.png" alt="Texto Alternativo" width="200" height="100">
 
 Webfate é uma plataforma de vendas online desenvolvida com um design moderno, elegante e minimalista. Facilitando a sua experiência de compra e venda.
 
