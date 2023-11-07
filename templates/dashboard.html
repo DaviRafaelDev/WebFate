@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #141425;
+            color: #fff;
+        }
+
+        header {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #dashboard {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .widget {
+            border: 1px solid #445;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            margin: 10px;
+            background-color: #1a1a2e;
+        }
+
+        .widget h2 {
+            color: #61dafb;
+        }
+
+        .navbar {
+            background-color: #1a1a2e !important;
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-toggler-icon {
+            background-color: #fff;
+        }
+
+        .form-control {
+            background-color: #2a2a48;
+            color: #fff;
+        }
+
+        .table {
+            background-color: #1a1a2e;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <span class="navbar-text welcome-text mr-3">Bem-vindo, {{ username }}!</span>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger" href="{{ url_for('index') }}">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="dashboard">
+        <div class="widget" id="widget1">
+            <h2>Vendas do Mês</h2>
+            <canvas id="widget1Chart" width="50" height="auto"></canvas>
+        </div>
+        <div class="widget" id="widget2">
+            <h2>Ranking Coaches</h2>
+            <table id="tabelaVendas" class="table">
+                <thead>
+                    <tr>
+                        <th>Vendedor</th>
+                        <th>Número de Vendas</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="widget" id="widget3">
+            <h2>Lorem</h2>
+            <canvas id="widget3Chart" width="50" height="auto"></canvas>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Conteúdo do Dashboard</h2>
+            <form method="POST" action="{{ url_for('adicionar_vendas') }}">
+                <div class="form-group">
+                    <label for="quantidadeVendas">Quantidade de Vendas no Mês:</label>
+                    <input type="number" class="form-control" id="quantidadeVendas" name="quantidadeVendas" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar Vendas</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        fetch('/api/usuarios')
+            .then(response => response.json())
+            .then(data => {
+                var widget3Data = {
+                    labels: ['Coaches', 'Assinantes'],
+                    datasets: [{
+                        data: [data.vendedores, data.compradores, data.total - data.vendedores - data.compradores],
+                        backgroundColor: ['#ff4040', '#0084ff'],
+                        hoverBackgroundColor: ['#ff5858', '#40a3ff']
+                    }]
+                };
+
+                var widget3Ctx = document.getElementById('widget3Chart').getContext('2d');
+                var widget3Chart = new Chart(widget3Ctx, {
+                    type: 'pie',
+                    data: widget3Data
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao obter dados dos usuários:', error);
+            });
+        var widget1Data = {
+            labels: ['Usuários Registrados', 'Receita Mensal', 'Despesas Mensais'],
+            datasets: [{
+                data: [1000, 50000, 20000],
+                backgroundColor: ['#FF6384', '#36A2EB', '#b5dead'],
+                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#b5dead']
+            }]
+        };
+
+        var widget1Ctx = document.getElementById('widget1Chart').getContext('2d');
+        var widget1Chart = new Chart(widget1Ctx, {
+            type: 'pie',
+            data: widget1Data
+        });
+    </script>
+
+    <script>
+        fetch('/api/vendas')
+            .then(response => response.json())
+            .then(data => {
+                const tabelaVendas = document.getElementById('tabelaVendas').getElementsByTagName('tbody')[0];
+                data.forEach(funcionario => {
+                    const linha = tabelaVendas.insertRow();
+                    const cellNome = linha.insertCell(0);
+                    const cellVendas = linha.insertCell(1);
+                    cellNome.textContent = funcionario.username;
+                    cellVendas.textContent = funcionario.vendasmes;
+                });
+            })
+            .catch(error => console.error('Erro ao obter dados de vendas:', error));
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
