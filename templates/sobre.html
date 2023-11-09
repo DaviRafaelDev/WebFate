@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <!-- METAS -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="DaviRafael">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ATRIBUIÇÕES -->
+
+    <link rel="stylesheet" href="/static/sobre.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <!-- TÍTULO -->
+
+    <link rel="shortcut icon" href="/static/Assets/W.png" type="image/x-icon">
+    <title>WebFate | Desvende o Destino Digital</title>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGAÇÃO -->
+
+    <header class="header">
+        <a href="" class="logo"><img src="/static/Assets/semtitulo.png" alt="mainLogo"></a>
+
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <ion-icon name="menu-outline" id="menu-icon"></ion-icon>
+            <ion-icon name="close-outline" id="close-icon"></ion-icon>
+        </label>
+
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="#" class="profilebtn">Entrar</a>
+            <a href="/loja">Loja</a>
+            <a href="/contato">Contato</a>
+            <a href="/sobre">Sobre</a>
+        </nav>
+
+        {% if session.username %}
+        <div class="user-welcome">
+            <span>Bem-vindo, {{ session.username }}!</span>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Sair</a>
+        </div>
+        {% else %}
+        <nav class="second-navbar">
+            <a href="#"><ion-icon name="person-outline" class="btnpop"></ion-icon></a>
+            <a href=""><ion-icon name="cart-outline"></ion-icon></a>
+            <a href=""><ion-icon name="heart-outline"></ion-icon></a>
+        </nav>
+        {% endif %}
+    </header>
+
+    <div class="error-popup">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="alert-messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- TELA DE LOGIN/REGISTRO -->
+    <section class="login-box">
+        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+
+        <!-- LOGIN -->
+
+        <form method="post" action="{{ url_for('login') }}" class="form-box login">
+            <h2>Entrar</h2>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="username">Nome</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <label for="password">Senha</label>
+            </div>
+            <div class="remember-forgot">
+                <label for=""><input type="checkbox">Lembrar</label>
+                <a href="">Esqueci a senha</a>
+            </div>
+            <button type="submit" class="loginbtn">Login</button>
+            <div class="login-register">
+                <p>Ainda não possui uma conta?<a href="#" class="register-link">Registrar</a></p>
+            </div>
+        </form>
+
+        <!-- REGISTRO -->
+
+        <form method="post" action="{{ url_for('register') }}" class="form-box register">
+            <h2>Registrar</h2>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="">Nome</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <label for="">E-Mail</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <label for="">Senha</label>
+            </div>
+            <div class="role-box">
+                <label for="role">O que você é?</label>
+                <select id="role" name="role">
+                    <option value="comprador">Comprador</option>
+                    <option value="vendedor">Vendedor</option>
+                </select>
+
+            </div>
+            <div class="remember-forgot">
+                <label for=""><input type="checkbox" required>Aceitar os <a href="">Termos de Serviço</a></label>
+            </div>
+            <button type="submit" class="loginbtn">Registrar</button>
+            <div class="login-register">
+                <p>Já possui uma conta?<a href="#" class="login-link">Entrar</a></p>
+            </div>
+        </form>
+    </section>
+
+    <!-- APRESENTAÇÃO -->
+    <section class="showcase">
+        <div class="showcase-container">
+            <h2>Sobre Nós</h2>
+            <p>Conheça todos os nossos infoprodutos mais bem avaliados do mercado</p>
+        </div>
+    </section>
+
+    <section class="trump-1">
+        <div class="container">
+            <div class="ilustration"> <ion-icon class="diamond" name = "cube-outline"></ion-icon> </div>
+            <div class="row">
+                <div class="grid-container">
+                    <h1>Sobre nossa empresa</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad cum fugiat, expedita iusto amet
+                        ducimus harum! Vel labore fugit ipsa dolore velit id quia! Saepe sapiente nihil magni quo unde!
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="vision">
+        <div class="vision-wrapper">
+        <div class="vision-container">
+            <div class="wrapper">
+                <h1>Nossa Visão</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quae blanditiis quibusdam quia vel
+                    dolorem, sed quaerat eos rerum, a voluptas illo temporibus quasi necessitatibus soluta cum optio
+                    placeat nam!</p>
+            </div>
+            <div class="icon">
+                <ion-icon class="eye" name="eye-outline"></ion-icon>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <section class="info">
+        <div class="info-container">
+            <div class="info-wrapper">
+                <h2>5000</h2>
+                <p>Membros</p>
+            </div>
+            <div class="info-wrapper">
+                <h2>2000</h2>
+                <p>Visitantes<p>
+            </div>
+            <div class="info-wrapper">
+                <h2>3000</h2>
+                <p>Assinantes<p>
+            </div>
+            <div class="info-wrapper">
+                <h2>800</h2>
+                <p>Patrocinadores<p>
+            </div>
+        </div>
+    </section>
+
+    <section class="Services">
+    <div class="services-wrapper">
+        <h2>Nossos Serviços</h2>
+        <div class="services-container">
+            <div class="services-box">
+                <div href=""><ion-icon class="service-icons" name="desktop-outline"></ion-icon></div>
+                <h3>Cursos Online</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, officiis!</p>
+            </div>
+            <div lass="services-box">
+                <div href=""><ion-icon class="service-icons" name="book-outline"></ion-icon></div>
+                <h3>Ebooks</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, cumque?</p>
+            </div>
+            <div lass="services-box">
+                <div href=""><ion-icon class="service-icons" name="build-outline"></ion-icon></div>
+                <h3> Workshops</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, consectetur!</p>
+            </div>
+            <div lass="services-box">
+                <div href=""><ion-icon class="service-icons" name="clipboard-outline"></ion-icon></div>
+                <h3>Templates</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, numquam.</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-contacts">
+                <img src="/static/Assets/semtitulo.png" alt="Logo" width="150px">
+                <p>Desvende o destino digital.</p>
+                <div class="social-media">
+                    <a href="" class="footer-link" id="instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="" class="footer-link" id="whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    <a href="" class="footer-link" id="twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+                </div>
+            </div>
+
+            <ul class="footer-list">
+                <li>
+                    <h2>Serviços</h2>
+                </li>
+                <li><a href="" class="footer-link">Produtos</a></li>
+                <li><a href="" class="footer-link">Site Map</a></li>
+                <li><a href="" class="footer-link">Contate-nos</a></li>
+            </ul>
+
+            <ul class="footer-list">
+                <li>
+                    <h2>Sobre Nós</h2>
+                </li>
+                <li><a href="" class="footer-link">Termos & Condições</a></li>
+                <li><a href="" class="footer-link">Informações Legais</a></li>
+                <li><a href="" class="footer-link">Pagamento Seguro</a></li>
+            </ul>
+
+            <div class="footer-subscribe">
+                <h2>Inscreva-se</h2>
+                <p>Adicione seu E-mail para receber novidades</p>
+
+                <div class="input-group">
+                    <input type="email" name="" id="email" placeholder="Digite aqui seu email...">
+                    <button>
+                        <i class="fa-regular fa-envelope"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>
+                &#0169Copyright 2023 - Todos os Direitos Reservados.
+            </p>
+            <p>
+                Feito por <a href="https://github.com/Aroeiraa" target="_blank">Alexandre Aroeira</a>
+                , <a href="https://github.com/AllanRDS" target="_blank">Allan Reymond</a>
+                , <a href="https://github.com/DaviRafaelDRSN" target="_blank">Davi Rafael</a>
+                & <a href="https://github.com/PedroSilvaCsDEV" target="_blank">Pedro Lucas</a>
+            </p>
+        </div>
+    </footer>
+
+
+
+
+    <!-- SCRIPTS -->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/static/sobre.js"></script>
+</body>
+
+</html>

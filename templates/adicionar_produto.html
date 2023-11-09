@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produto</title>
+    <!-- Adicione os links para o Bootstrap CSS aqui -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .form-control,
+        .form-control:focus {
+            background-color: #212529;
+            color: #ffffff;
+            border-color: #007bff;
+        }
+
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:visited {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Adicionar Produto</h1>
+        <form action="/adicionar_produto" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="product_name">Nome do Produto</label>
+                <input type="text" class="form-control" id="product_name" name="product_name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Preço</label>
+                <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Imagem do Produto</label>
+                <input type="file" class="form-control-file" id="image" name="image" required accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+        </form>
+    </div>
+    <!-- Adicione os scripts do Bootstrap aqui -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

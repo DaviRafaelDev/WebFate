@@ -1,0 +1,1 @@
+Observação: o site deve ser aberto a partir da pasta principal do projeto(/WebFate) de preferência na plataforma VSCode com a extensão Live Server. Caso alguma das pastas contidas no projeto(Contato, Home ou Sobre), sejam abertas individualmente, nenhum stylesheet ou asset será carregado.

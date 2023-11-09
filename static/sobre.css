@@ -1,0 +1,869 @@
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Mooli', sans-serif;
+    box-sizing: border-box;
+    user-select: none;
+    text-decoration: none;
+}
+
+body {
+    min-height: 100vh;
+    background: #F2EFEA;
+}
+
+hr {
+    margin: 20px;
+    color: #121113;
+}
+
+/* CABEÇALHO */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+    background: #121113;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.logo img {
+    width: 150px;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 16px;
+    color: #F2EFEA;
+    text-decoration: none;
+    font-weight: 400;
+    margin-left: 40px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #F2EFEA;
+    border-radius: 5px;
+    left: 0;
+    bottom: -6px;
+    transform: scaleX(0);
+    transition: transform .3s;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar .profilebtn {
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+.icons {
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+.second-navbar a {
+    position: relative;
+    font-size: 24px;
+    color: #F2EFEA;
+    text-decoration: none;
+    margin-left: 40px;
+    transition: .2s ease;
+}
+
+.second-navbar a:hover {
+    color: #808080;
+}
+
+.error-popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 999;
+}
+
+.user-welcome {
+    color: #fff;
+}
+
+.user-welcome a {
+    text-decoration: none;
+}
+
+.user-welcome .logout-btn {
+    padding: 1rem;
+    margin-left: 10px;
+    font-size: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #fff;
+    color: #121113;
+    transition: .2s ease;
+}
+
+.user-welcome .logout-btn:hover {
+    background: #e0e0e0;
+    color: #1b1a1d;
+}
+
+/* LOGIN/REGISTRO */
+
+.login-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 440px;
+    background: rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 2px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    justify-content: center;
+    align-items: center;
+    transition: height .2s ease;
+    overflow: hidden;
+    display: none;
+}
+
+.login-box.active-popup {
+    display: flex;
+}
+
+.login-box .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #FFF;
+    font-size: 2em;
+    color: #121113;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 2px;
+    cursor: pointer;
+    z-index: 1;
+    transition: .5s ease;
+}
+
+.login-box .icon-close:hover {
+    background: #808080;
+}
+
+.login-box.active {
+    height: 600px;
+}
+
+.login-box .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.login-box .form-box.login {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.login-box.active .form-box.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.login-box .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+
+.login-box.active .form-box.register {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.form-box h2 {
+    font-size: 2em;
+    color: #FFF;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #fff;
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #FFF;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2rem;
+    color: #FFF;
+    line-height: 57px;
+}
+
+.role-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.role-box label {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.role-box select {
+    width: 50%;
+    height: 50%;
+    background: #FFF;
+    border: none;
+    outline: none;
+    color: #0e0e0f;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0 35px 0 5px;
+    border-radius: 6px;
+    transition: .5s ease;
+}
+
+.role-box select:hover {
+    background: #F2EFEA;
+}
+
+.remember-forgot {
+    font-size: .9em;
+    color: #FFF;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.loginbtn {
+    width: 100%;
+    height: 45px;
+    background: #FFF;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #121113;
+    font-weight: 500;
+    transition: .5s ease;
+}
+
+.loginbtn:hover {
+    background: #808080;
+}
+
+.login-register {
+    font-size: .9em;
+    color: #FFF;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
+}
+
+/* APRESENTAÇÃO */
+
+.showcase {
+    height: 100vh;
+    margin-top: 50px;
+    padding: 1.3rem 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F2EFEA;
+    background: url('/static/Assets/priscilla-du-preez-Q7wGvnbuwj0-unsplash.jpg') no-repeat center center/cover;
+    background-color: rgba(0, 0, 0, 0.664);
+    background-blend-mode: color;
+}
+
+.showcase-container {
+    text-align: center;
+}
+
+.showcase-container h2 {
+    font-size: 4rem;
+
+}
+
+.showcase-container p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+/* Section 1 (AllanRDS) */
+
+.container {
+    min-height: 60vh;
+    padding: 1.3rem 10%;
+    margin-top: 1rem;
+    background-color: #F2EFEA;
+    display: grid;
+    text-align: center;
+
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 100px;
+}
+
+.container .grid-container {
+    display: grid;
+    margin-top: 60px;
+}
+
+.container .grid-container h1 {
+    margin-bottom: 0.625rem;
+    font-size: 2rem;
+}
+
+.container .grid-container p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.container .grid-container .icons-container {
+    display: grid;
+    place-content: center;
+}
+
+.ilustration .diamond {
+    font-size: 2.5rem;
+    width: 250px;
+    height: 250px;
+}
+
+/* Vision */
+
+
+.vision {
+    min-height: 75vh;
+    padding: 50px;
+    text-align: center;
+}
+
+.vision-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vision-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 100px;
+    margin-top: 50px;
+}
+
+.wrapper h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+
+}
+
+.wrapper p {
+    font-size: 1rem;
+    color: #1b1a1d;
+    margin-bottom: 15px;
+}
+
+.eye {
+    font-size: 2.5rem;
+    width: 250px;
+    height: 250px;
+}
+
+.wrapper {
+    margin-top: 70px;
+    text-align: center;
+}
+
+/* INFORMACIONAL */
+
+.info {
+    min-height: 40vh;
+    padding: 1.3rem 5%;
+    background: #121113;
+    color: #fff;
+    text-align: center;
+}
+
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 5rem 1rem;
+}
+
+.info-wrapper p {
+    color: #F0ECDB;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.info-wrapper h2 {
+    font-size: 2.5rem;
+}
+
+/* Services */
+
+.Services {
+    min-height: auto;
+    padding: 0 20px;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 50px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.service-icons {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    border-style: solid;
+    border-radius: 50%;
+    padding: 2rem;
+
+}
+
+.services-wrapper {
+    margin-top: 70px;
+    text-align: center;
+}
+
+.services-wrapper h2 {
+    font-size: 2rem;
+}
+
+/* RODAPÉ */
+
+.footer {
+    width: 100%;
+    background: #121113;
+    color: #F2EFEA;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3rem 3.5rem;
+}
+
+.footer-contacts h3 {
+    margin-bottom: 0.75rem;
+}
+
+.social-media {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+
+.social-media .footer-link {
+    height: 2.5rem;
+    width: 2.5rem;
+    color: #F2EFEA;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: .2s ease;
+}
+
+.social-media .footer-link:hover {
+    color: #808080;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+.footer-list .footer-link {
+    color: #F0ECDB;
+    transition: .2s ease;
+}
+
+.footer-list .footer-link:hover {
+    color: #808080;
+}
+
+.footer-subscribe {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    gap: 1.5rem;
+}
+
+.footer-subscribe p {
+    color: #F0ECDB;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: #1b1a1d;
+}
+
+.input-group input {
+    all: unset;
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.input-group button {
+    background: transparent;
+    border: none;
+    color: #F2EFEA;
+    padding: 0px 1.25rem;
+    font-size: 1.125rem;
+    height: 100%;
+    cursor: pointer;
+}
+
+.footer-copyright {
+    background: #0e0e0f;
+    font-size: 0.9rem;
+    padding: 1.2rem;
+    font-weight: 100;
+    text-align: center;
+}
+
+.footer-copyright a {
+    text-decoration: none;
+    color: #F0ECDB;
+}
+
+@media (max-width: 992px) {
+    .header {
+        padding: 0.9rem 5%;
+    }
+
+    .showcase {
+        padding: 1.3rem 5%;
+    }
+
+    .showcase-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .showcase-container p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 882px) {
+    .showcase-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .showcase-container p {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 790px) {
+    .icons {
+        display: inline-flex;
+    }
+
+    #check:checked~.icons #menu-icon {
+        display: none;
+    }
+
+    .icons #close-icon {
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: #1b1a1d;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.5);
+        transition: .5s ease;
+        overflow: hidden;
+    }
+
+    #check:checked~.navbar {
+        height: 16rem;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        transition: .5s ease;
+    }
+
+    .navbar a:hover::after {
+        transform: scaleX(0);
+    }
+
+    #check:checked~.navbar a {
+        transform: translateY(0);
+    }
+
+    .second-navbar {
+        display: none;
+    }
+
+    .navbar .profilebtn {
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 993px) {
+    .showcase h2 {
+        font-size: 3rem;
+    }
+    
+    .showcase p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .info-wrapper p {
+        font-size: 1rem;
+    }
+
+    .showcase p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 710px) {
+    .info-wrapper p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .info {
+        font-size: 3rem;
+    }
+
+    .showcase-container p {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        grid-template-columns: 1, 1fr;
+    }
+
+    .trump-1 .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .vision-container {
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
+
+    .eye {
+        order: 1;
+        margin-bottom: 0;
+    }
+
+    .wrapper {
+        order: 2;
+        margin-top: 0;
+    }
+
+    .info-wrapper h2 {
+        font-size: 1.9rem;
+    }
+
+    .info-wrapper p {
+        font-size: 1rem;
+    }
+
+}
+
+@media (max-width: 536px) {
+    .showcase-container h2 {
+        font-size: 3rem;
+    }
+
+    .showcase-container p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer {
+        font-size: 0.75rem
+    }
+
+    .footer a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 478px) {
+    .showcase-container h2 {
+        font-size: 3rem;
+    }
+
+    .showcase-container p {
+        font-size: 1.5rem;
+    }
+
+    .info-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-wrapper {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 424px) {
+    .showcase-container h2 {
+        font-size: 3rem;
+    }
+
+    .showcase-container p {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .footer-content {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 3rem 2rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .vision {
+        padding: 20px;
+    }
+
+    .wrapper {
+        margin-top: 20px;
+    }
+    
+}
+
+@media (max-width: 350px) {
+    .footer {
+        font-size: 0.6rem
+    }
+
+    .footer a {
+        font-size: 0.6rem;
+    }
+}
