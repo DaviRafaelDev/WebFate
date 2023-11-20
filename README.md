@@ -30,13 +30,6 @@ Webfate é uma plataforma voltada para facilitar suas transações online. Nosso
 
 - **Venda de Produtos Digitais**: O Webfate é especializado na venda de produtos digitais, tornando-o uma escolha ideal para empreendedores online.
 
-## Como Começar
-
-1. Faça login na plataforma Webfate.
-2. Navegue pela plataforma para explorar os produtos disponíveis.
-3. Para vender seus produtos, siga as instruções fornecidas na seção "Venda" da plataforma.
-4. Para comprar produtos, adicione-os ao seu carrinho e siga o processo de pagamento.
-
 ## Contribuindo
 
 Valorizamos a contribuição da comunidade para melhorar o Webfate. Se você deseja contribuir ou relatar problemas, sinta-se à vontade para abrir uma solicitação de pull ou um problema no repositório do projeto.
@@ -47,4 +40,4 @@ Este projeto é licenciado sob a Licença MIT. Para obter mais informações, co
 
 ---
 
-<img src="Home/Assets/W.png" alt="Texto Alternativo" width="100" height="100">
+<img src="/static/Assets/W.png" alt="Texto Alternativo" width="100" height="100">
