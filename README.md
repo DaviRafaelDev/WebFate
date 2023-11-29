@@ -22,18 +22,6 @@ Webfate é uma plataforma de vendas online desenvolvida com um design moderno, e
 
 Webfate é uma plataforma voltada para facilitar suas transações online. Nosso objetivo é tornar a experiência de compra e venda o mais simples e eficiente possível. Para isso, incorporamos um design moderno e elegante, tornando a navegação mais agradável para nossos usuários.
 
-## Recursos Principais
-
-- **Design Minimalista**: O Webfate adota um design minimalista, garantindo que a interface seja limpa e fácil de usar.
-
-- **Facilidade de Uso**: A plataforma foi projetada pensando na usabilidade, tornando-a intuitiva para todos os usuários.
-
-- **Venda de Produtos Digitais**: O Webfate é especializado na venda de produtos digitais, tornando-o uma escolha ideal para empreendedores online.
-
-## Contribuindo
-
-Valorizamos a contribuição da comunidade para melhorar o Webfate. Se você deseja contribuir ou relatar problemas, sinta-se à vontade para abrir uma solicitação de pull ou um problema no repositório do projeto.
-
 ## Licença
 
 Este projeto é licenciado sob a Licença MIT. Para obter mais informações, consulte o arquivo [LICENSE](LICENSE).
